@@ -2,16 +2,13 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.preprocessing import StandardScaler
-from sklearn.linear_model import Perceptron as Mymodel1
 from sklearn.linear_model import LogisticRegression as Mymodel
-from sklearn.ensemble import AdaBoostClassifier as Mymodel2
-from sklearn.ensemble import RandomForestClassifier as Mymodel3
-from sklearn.svm import LinearSVC
+from sklearn.ensemble import AdaBoostClassifier as Mymodel1
 from sklearn.preprocessing import minmax_scale
 
-import time
-
 import preprocess as ap
+
+FRACTION = 0.25
 
 #preprocess train and test data to get data without sensitive labels
 train_data, train_label, test_data, test_label = ap.compas_preprocess('compas-scores-two-years.csv', True)
@@ -134,7 +131,7 @@ print("Overall train accuracy of SeqPAV = %.5f " % seqpav_overall_acc_train)
 print("Overall test accuracy of SeqPAV = %.5f " % seqpav_overall_acc_test)
 
 erm = classifiers[0]
-per = Mymodel2(random_state = 0)
+per = Mymodel1(random_state = 0)
 per.fit(train_data_scaled, train_label)
 per_preds = per.predict(test_data_scaled)
 erm_preds = erm.predict(test_data_scaled)
@@ -160,10 +157,10 @@ per_accs = []
 test_size = len(test_label)
 correct_size = len(correct_label)
 wrong_size = len(wrong_label)
-l = int(0.75 * test_size)
+l = int(0.25 * test_size)
 
-for t in range(5):
-    i = t + 6
+for t in range(11):
+    i = t + 0
     print("i = %d" %i)
     samples_wrong_0 = l - int((i / 10) * l)
     samples_correct_0 = int((i / 10) * l)
@@ -206,7 +203,7 @@ for t in range(5):
     opt_accs.append(opt_acc)
     per_accs.append(per_acc)
     
-x = 0.1 * np.arange(6, 11, 1)
+x = 0.1 * np.arange(0, 11, 1)
 plt.plot(x, erm_accs, color = 'red', linestyle = 'solid', marker = 'o', label = "LR")
 plt.plot(x, per_accs, color = 'brown', linestyle = ':', marker = 'D', label = "AdaBoost")
 plt.plot(x, greedy_accs, color = 'blue', linestyle = 'dashed', marker = '^', label = "Greedy")
