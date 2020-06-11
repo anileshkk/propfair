@@ -77,7 +77,6 @@ greedy_overall_acc_train = ap.accuracy_randomized(classifiers, weights, train_da
 greedy_overall_acc_test = ap.accuracy_randomized(classifiers, weights, test_data_scaled, test_label)
 
 #implementing seqPAV
-#num_iter = total_size #better convergence for 2n?
 num_iter = 500
 print('Implementing SeqPAV with num_iter = %d' %num_iter)
 points_tally = np.ones(len(train_label))

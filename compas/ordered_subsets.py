@@ -2,11 +2,8 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.preprocessing import StandardScaler
-from sklearn.linear_model import Perceptron as Mymodel1
 from sklearn.linear_model import LogisticRegression as Mymodel
-from sklearn.ensemble import AdaBoostClassifier as Mymodel2
-from sklearn.ensemble import RandomForestClassifier as Mymodel3
-from sklearn.svm import LinearSVC
+from sklearn.ensemble import AdaBoostClassifier as Mymodel1
 from sklearn.preprocessing import minmax_scale
 
 import time
@@ -80,7 +77,6 @@ greedy_overall_acc_train = ap.accuracy_randomized(classifiers, weights, train_da
 greedy_overall_acc_test = ap.accuracy_randomized(classifiers, weights, test_data_scaled, test_label)
 
 #implementing seqPAV
-#num_iter = total_size #better convergence for 2n?
 num_iter = 500
 print('Implementing SeqPAV with num_iter = %d' %num_iter)
 points_tally = np.ones(len(train_label))
@@ -134,7 +130,7 @@ print("Overall train accuracy of SeqPAV = %.5f " % seqpav_overall_acc_train)
 print("Overall test accuracy of SeqPAV = %.5f " % seqpav_overall_acc_test)
 
 erm = classifiers[0]
-per = Mymodel2(random_state = 0)
+per = Mymodel1(random_state = 0)
 per.fit(train_data_scaled, train_label)
 per_preds = per.predict(test_data_scaled)
 erm_preds = erm.predict(test_data_scaled)
