@@ -201,7 +201,7 @@ for i in range(len(test_label)):
         opt = Mymodel(random_state = 0, solver = 'newton-cg')
         opt.fit(data, label)
         opt_score = opt.score(data, label)
-        print(opt_score)
+        #print(opt_score)
         opt_acc = ((i+1) / test_size) * opt_score * opt_score
         opt_plot = np.append(opt_plot, opt_acc)
         opt_x = np.append(opt_x, i)
@@ -256,7 +256,7 @@ for i in range(len(test_label)):
         opt = Mymodel(random_state = 0, solver = 'newton-cg')
         opt.fit(data, label)
         opt_score = opt.score(data, label)
-        print(opt_score)
+        #print(opt_score)
         opt_acc = ((i+1) / test_size) * opt_score * opt_score
         opt_plot = np.append(opt_plot, opt_acc)
         opt_x = np.append(opt_x, i)
@@ -309,7 +309,7 @@ for i in range(len(test_label)):
         opt = Mymodel(random_state = 0, solver = 'newton-cg')
         opt.fit(data, label)
         opt_score = opt.score(data, label)
-        print(opt_score)
+        #print(opt_score)
         opt_acc = ((i+1) / test_size) * opt_score * opt_score
         opt_plot = np.append(opt_plot, opt_acc)
         opt_x = np.append(opt_x, i)
