@@ -10,10 +10,10 @@ from sklearn.preprocessing import minmax_scale
 
 import time
 
-import adult_preprocess as ap
+import preprocess as ap
 
 #preprocess train and test data to get data without sensitive labels
-train_data, train_label, test_data, test_label = ap.adult_preprocess('adult_data.txt', 'adult_test.txt')
+train_data, train_label, test_data, test_label = ap.preprocess('adult_data.txt', 'adult_test.txt')
 
 total_size = len(train_label)
 total_size_test = len(test_label)
