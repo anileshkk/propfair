@@ -2,15 +2,12 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.preprocessing import StandardScaler
-
 from sklearn.linear_model import LogisticRegression as Mymodel
 from sklearn.ensemble import AdaBoostClassifier as Mymodel1
-
 from sklearn.preprocessing import minmax_scale
-
-import time
-
 import preprocess as ap
+
+FRACTION = 0.15
 
 #preprocess train and test data to get data without sensitive labels
 train_data, train_label, test_data, test_label = ap.preprocess('adult_data.txt', 'adult_test.txt')
@@ -159,7 +156,7 @@ per_accs = []
 test_size = len(test_label)
 correct_size = len(correct_label)
 wrong_size = len(wrong_label)
-l = int(0.15 * test_size)
+l = int(FRACTION * test_size)
 
 for t in range(11):
     i = t + 0
